@@ -354,7 +354,7 @@ public class EpicFarming extends SongodaPlugin {
         ItemStack item = Settings.FARM_BLOCK_MATERIAL.getMaterial().parseItem();
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(TextUtils.formatText(Methods.formatName(level.getLevel())));
-        String line = getLocale().getMessage("general.nametag.lore").getMessage();
+        String line = getLocale().getMessage("general.nametag.lore").toText();
         if (!line.equals("")) {
             meta.setLore(Collections.singletonList(line));
         }

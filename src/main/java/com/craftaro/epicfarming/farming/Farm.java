@@ -100,7 +100,7 @@ public class Farm implements Data {
         }
 
         if (Settings.USE_PROTECTION_PLUGINS.getBoolean() && !ProtectionManager.canInteract(player, this.location)) {
-            player.sendMessage(EpicFarming.getInstance().getLocale().getMessage("event.general.protected").getPrefixedMessage());
+            EpicFarming.getInstance().getLocale().getMessage("event.general.protected").sendPrefixedMessage(player);
             return;
         }
 

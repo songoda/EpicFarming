@@ -92,7 +92,7 @@ public class ModuleAutoButcher extends Module {
     @Override
     public String getDescription() {
         return this.plugin.getLocale().getMessage("interface.button.autobutcher")
-                .processPlaceholder("status", this.autoButcherDelay).getMessage();
+                .processPlaceholder("status", this.autoButcherDelay).toText();
     }
 
     private boolean isEnabled(Farm farm) {

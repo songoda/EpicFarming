@@ -143,7 +143,7 @@ public class ModuleAutoBreeding extends Module {
         return this.plugin.getLocale()
                 .getMessage("interface.button.autobreeding")
                 .processPlaceholder("status", this.autoBreedCap)
-                .getMessage();
+                .toText();
     }
 
     private void handleStackedBreed(LivingEntity entity) {

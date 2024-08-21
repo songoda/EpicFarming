@@ -175,8 +175,8 @@ public class ModuleAutoCollect extends Module {
         return this.plugin.getLocale()
                 .getMessage("interface.button.autocollect")
                 .processPlaceholder("status",
-                        this.plugin.getLocale().getMessage("general.interface.unlocked").getMessage())
-                .getMessage();
+                        this.plugin.getLocale().getMessage("general.interface.unlocked").toText())
+                .toText();
     }
 
     public boolean isEnabled(Farm farm) {
@@ -283,7 +283,7 @@ public class ModuleAutoCollect extends Module {
             return EpicFarming.getPlugin(EpicFarming.class)
                     .getLocale()
                     .getMessage("general.interface." + name().replace("_", "").toLowerCase())
-                    .getMessage();
+                    .toText();
         }
     }
 }

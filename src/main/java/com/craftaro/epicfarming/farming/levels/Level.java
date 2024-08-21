@@ -36,22 +36,22 @@ public class Level {
         EpicFarming instance = EpicFarming.getPlugin(EpicFarming.class);
 
         this.description.add(instance.getLocale().getMessage("interface.button.radius")
-                .processPlaceholder("radius", this.radius).getMessage());
+                .processPlaceholder("radius", this.radius).toText());
 
         this.description.add(instance.getLocale().getMessage("interface.button.speed")
-                .processPlaceholder("speed", this.speedMultiplier).getMessage());
+                .processPlaceholder("speed", this.speedMultiplier).toText());
 
 
         if (this.autoReplant) {
             this.description.add(instance.getLocale().getMessage("interface.button.autoreplant")
                     .processPlaceholder("status",
                             instance.getLocale().getMessage("general.interface.unlocked")
-                                    .getMessage()).getMessage());
+                                    .toText()).toText());
         }
 
         if (this.pages > 1) {
             this.description.add(instance.getLocale().getMessage("interface.button.pages")
-                    .processPlaceholder("amount", this.pages).getMessage());
+                    .processPlaceholder("amount", this.pages).toText());
         }
 
         for (Module module : this.registeredModules) {
