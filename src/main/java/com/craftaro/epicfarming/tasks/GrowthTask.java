@@ -1,13 +1,13 @@
 package com.craftaro.epicfarming.tasks;
 
 import com.craftaro.core.compatibility.CompatibleMaterial;
-import com.craftaro.third_party.com.cryptomorin.xseries.XBlock;
-import com.craftaro.third_party.com.cryptomorin.xseries.XMaterial;
-import com.craftaro.core.utils.BlockUtils;
 import com.craftaro.epicfarming.EpicFarming;
 import com.craftaro.epicfarming.farming.Crop;
 import com.craftaro.epicfarming.farming.FarmType;
 import com.craftaro.epicfarming.settings.Settings;
+import com.craftaro.epicfarming.utils.CropUtils;
+import com.craftaro.third_party.com.cryptomorin.xseries.XBlock;
+import com.craftaro.third_party.com.cryptomorin.xseries.XMaterial;
 import org.bukkit.Location;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -52,7 +52,7 @@ public class GrowthTask extends BukkitRunnable {
                 }
             }
 
-            BlockUtils.incrementGrowthStage(crop.getLocation().getBlock());
+            CropUtils.incrementGrowthStage(crop.getLocation().getBlock());
             crop.setTicksLived(1);
         }
 
