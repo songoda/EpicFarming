@@ -2,14 +2,14 @@ package com.craftaro.epicfarming.tasks;
 
 import com.craftaro.core.compatibility.CompatibleMaterial;
 import com.craftaro.core.compatibility.ServerVersion;
-import com.craftaro.third_party.com.cryptomorin.xseries.XBlock;
-import com.craftaro.third_party.com.cryptomorin.xseries.XMaterial;
-import com.craftaro.core.utils.BlockUtils;
 import com.craftaro.epicfarming.EpicFarming;
 import com.craftaro.epicfarming.farming.Crop;
 import com.craftaro.epicfarming.farming.Farm;
 import com.craftaro.epicfarming.farming.FarmType;
 import com.craftaro.epicfarming.settings.Settings;
+import com.craftaro.epicfarming.utils.CropUtils;
+import com.craftaro.third_party.com.cryptomorin.xseries.XBlock;
+import com.craftaro.third_party.com.cryptomorin.xseries.XMaterial;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -115,7 +115,7 @@ public class FarmTask extends BukkitRunnable {
 
                 if (farm.getFarmType() != FarmType.LIVESTOCK) {
                     for (Block block : crops) {
-                        if (!BlockUtils.isCropFullyGrown(block)) {
+                        if (!CropUtils.isFullyGrown(block)) {
                             // Add to GrowthTask
                             growthTask.addLiveCrop(block.getLocation(), new Crop(block.getLocation(), farm));
                         }
