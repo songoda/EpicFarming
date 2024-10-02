@@ -7,6 +7,7 @@ import com.craftaro.epicfarming.farming.levels.modules.Module;
 import com.craftaro.epicfarming.farming.levels.modules.ModuleAutoCollect;
 import com.craftaro.epicfarming.settings.Settings;
 import com.craftaro.epicfarming.farming.Farm;
+import com.craftaro.ultimatestacker.api.events.entity.StackedItemSpawnEvent;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -39,6 +40,7 @@ public class EntityListeners implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onEntityDeath(EntityDeathEvent event) {
+        if (event.getDrops().isEmpty()) return;
         LivingEntity entity = event.getEntity();
         if (!entity.hasMetadata("EFA-TAGGED")) {
             return;

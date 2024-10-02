@@ -1,5 +1,6 @@
 package com.craftaro.epicfarming.gui;
 
+import com.craftaro.core.chat.AdventureUtils;
 import com.craftaro.core.gui.CustomizableGui;
 import com.craftaro.core.gui.GuiUtils;
 import com.craftaro.third_party.com.cryptomorin.xseries.XMaterial;
@@ -98,10 +99,10 @@ public class OverviewGui extends CustomizableGui {
         List<String> farmLore = this.level.getDescription();
         farmLore.add("");
         if (nextLevel == null) {
-            farmLore.add(this.plugin.getLocale().getMessage("event.upgrade.maxed").getMessage());
+            farmLore.add(this.plugin.getLocale().getMessage("event.upgrade.maxed").toText());
         } else {
             farmLore.add(this.plugin.getLocale().getMessage("interface.button.level")
-                    .processPlaceholder("level", nextLevel.getLevel()).getMessage());
+                    .processPlaceholder("level", nextLevel.getLevel()).toText());
             farmLore.addAll(nextLevel.getDescription());
         }
 
@@ -110,16 +111,16 @@ public class OverviewGui extends CustomizableGui {
             String[] parts = this.plugin.getLocale().getMessage("interface.button.boostedstats")
                     .processPlaceholder("amount", Integer.toString(boostData.getMultiplier()))
                     .processPlaceholder("time", TimeUtils.makeReadable(boostData.getEndTime() - System.currentTimeMillis()))
-                    .getMessage().split("\\|");
+                    .toText().split("\\|");
             farmLore.add("");
             for (String line : parts) {
-                farmLore.add(TextUtils.formatText(line));
+                farmLore.add(AdventureUtils.formatLegacy(line));
             }
         }
 
         setItem("farm", 13, GuiUtils.createButtonItem(Settings.FARM_BLOCK_MATERIAL.getMaterial(XMaterial.END_ROD),
                 this.plugin.getLocale().getMessage("general.nametag.farm")
-                        .processPlaceholder("level", this.level.getLevel()).getMessage(),
+                        .processPlaceholder("level", this.level.getLevel()).toText(),
                 farmLore));
 
         if (this.player != null && Settings.UPGRADE_WITH_XP.getBoolean() && this.player.hasPermission("EpicFarming.Upgrade.XP")) {
@@ -162,9 +163,9 @@ public class OverviewGui extends CustomizableGui {
         ItemMeta farmTypeMeta = farmType.getItemMeta();
         farmTypeMeta.setDisplayName(this.plugin.getLocale().getMessage("interface.button.farmtype")
                 .processPlaceholder("type", this.farm.getFarmType().translate())
-                .getMessage());
+                .toText());
         farmTypeMeta.setLore(Collections.singletonList(this.plugin.getLocale().getMessage("interface.button.farmtypelore")
-                .getMessage()));
+                .toText()));
         farmType.setItemMeta(farmTypeMeta);
 
         Map<Integer, Integer[]> layouts = new HashMap<>();

@@ -78,8 +78,8 @@ public class ModuleAutoButcher extends Module {
     public ItemStack getGUIButton(Farm farm) {
         return GuiUtils.createButtonItem(XMaterial.STONE_SWORD, this.plugin.getLocale().getMessage("interface.button.autobutcher")
                         .processPlaceholder("status", isEnabled(farm)
-                                ? this.plugin.getLocale().getMessage("general.interface.on").getMessage()
-                                : this.plugin.getLocale().getMessage("general.interface.off").getMessage())
+                                ? this.plugin.getLocale().getMessage("general.interface.on").toText()
+                                : this.plugin.getLocale().getMessage("general.interface.off").toText())
                         .getMessage(),
                 this.plugin.getLocale().getMessage("interface.button.functiontoggle").getMessage());
     }
@@ -92,7 +92,7 @@ public class ModuleAutoButcher extends Module {
     @Override
     public String getDescription() {
         return this.plugin.getLocale().getMessage("interface.button.autobutcher")
-                .processPlaceholder("status", this.autoButcherDelay).getMessage();
+                .processPlaceholder("status", this.autoButcherDelay).toText();
     }
 
     private boolean isEnabled(Farm farm) {

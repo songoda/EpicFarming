@@ -9,7 +9,7 @@ public enum FarmType {
         return EpicFarming.getPlugin(EpicFarming.class)
                 .getLocale()
                 .getMessage("general.interface." + name().toLowerCase())
-                .getMessage();
+                .toText();
     }
 
 }

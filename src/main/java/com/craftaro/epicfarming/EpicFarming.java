@@ -32,6 +32,7 @@ import com.craftaro.epicfarming.listeners.EntityListeners;
 import com.craftaro.epicfarming.listeners.InteractListeners;
 import com.craftaro.epicfarming.listeners.InventoryListeners;
 import com.craftaro.epicfarming.listeners.MoistureListeners;
+import com.craftaro.epicfarming.listeners.UltimateStackerListener;
 import com.craftaro.epicfarming.listeners.UnloadListeners;
 import com.craftaro.epicfarming.settings.Settings;
 import com.craftaro.epicfarming.storage.Storage;
@@ -74,6 +75,7 @@ public class EpicFarming extends SongodaPlugin {
     private FarmTask farmTask;
 
     private EntityUtils entityUtils;
+    private static EpicFarming instance;
 
     @Override
     public void onPluginLoad() {
@@ -94,6 +96,7 @@ public class EpicFarming extends SongodaPlugin {
 
     @Override
     public void onPluginEnable() {
+        instance = this;
         // Run Songoda Updater
         SongodaCore.registerPlugin(this, 21, XMaterial.WHEAT);
 
@@ -153,6 +156,10 @@ public class EpicFarming extends SongodaPlugin {
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
                 e.printStackTrace();
             }
+        }
+
+        if (pluginManager.isPluginEnabled("UltimateStacker")) {
+            pluginManager.registerEvents(new UltimateStackerListener(this), this);
         }
 
         // Start tasks
@@ -347,7 +354,7 @@ public class EpicFarming extends SongodaPlugin {
         ItemStack item = Settings.FARM_BLOCK_MATERIAL.getMaterial().parseItem();
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(TextUtils.formatText(Methods.formatName(level.getLevel())));
-        String line = getLocale().getMessage("general.nametag.lore").getMessage();
+        String line = getLocale().getMessage("general.nametag.lore").toText();
         if (!line.equals("")) {
             meta.setLore(Collections.singletonList(line));
         }
@@ -390,11 +397,7 @@ public class EpicFarming extends SongodaPlugin {
         return this.entityUtils;
     }
 
-    /**
-     * @deprecated Use {@link EpicFarming#getPlugin(Class)} instead.
-     */
-    @Deprecated
     public static EpicFarming getInstance() {
-        return getPlugin(EpicFarming.class);
+        return instance;
     }
 }

@@ -26,7 +26,7 @@ public class Methods {
                 .getLocale()
                 .getMessage("general.nametag.farm")
                 .processPlaceholder("level", level)
-                .getMessage();
+                .toText();
     }
 
     public static void animate(Location location, XMaterial material) {

@@ -155,8 +155,8 @@ public class ModuleAutoCollect extends Module {
     public ItemStack getGUIButton(Farm farm) {
         return GuiUtils.createButtonItem(XMaterial.BUCKET, this.plugin.getLocale().getMessage("interface.button.autocollect")
                         .processPlaceholder("status", isEnabled(farm)
-                                ? this.plugin.getLocale().getMessage("general.interface.on").getMessage()
-                                : this.plugin.getLocale().getMessage("general.interface.off").getMessage()).getMessage(),
+                                ? this.plugin.getLocale().getMessage("general.interface.on").toText()
+                                : this.plugin.getLocale().getMessage("general.interface.off").toText()).getMessage(),
                 this.plugin.getLocale().getMessage("interface.button.collectiontype").processPlaceholder("status", getCollectionType(farm).translate()).getMessage(),
                 this.plugin.getLocale().getMessage("interface.button.functiontoggle").getMessage());
     }
@@ -175,8 +175,8 @@ public class ModuleAutoCollect extends Module {
         return this.plugin.getLocale()
                 .getMessage("interface.button.autocollect")
                 .processPlaceholder("status",
-                        this.plugin.getLocale().getMessage("general.interface.unlocked").getMessage())
-                .getMessage();
+                        this.plugin.getLocale().getMessage("general.interface.unlocked").toText())
+                .toText();
     }
 
     public boolean isEnabled(Farm farm) {
@@ -283,7 +283,7 @@ public class ModuleAutoCollect extends Module {
             return EpicFarming.getPlugin(EpicFarming.class)
                     .getLocale()
                     .getMessage("general.interface." + name().replace("_", "").toLowerCase())
-                    .getMessage();
+                    .toText();
         }
     }
 }
