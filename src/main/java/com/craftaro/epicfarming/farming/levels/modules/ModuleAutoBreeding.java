@@ -127,8 +127,8 @@ public class ModuleAutoBreeding extends Module {
     public ItemStack getGUIButton(Farm farm) {
         return GuiUtils.createButtonItem(XMaterial.EGG, this.plugin.getLocale().getMessage("interface.button.autobreeding")
                         .processPlaceholder("status", isEnabled(farm)
-                                ? this.plugin.getLocale().getMessage("general.interface.on").getMessage()
-                                : this.plugin.getLocale().getMessage("general.interface.off").getMessage())
+                                ? this.plugin.getLocale().getMessage("general.interface.on").toText()
+                                : this.plugin.getLocale().getMessage("general.interface.off").toText())
                         .getMessage(),
                 this.plugin.getLocale().getMessage("interface.button.functiontoggle").getMessage());
     }
